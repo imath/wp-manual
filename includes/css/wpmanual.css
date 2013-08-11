@@ -1,0 +1,148 @@
+/* some css rules */
+#wpmanual div.pagination {
+	background: transparent;
+	border: none;
+	color: #888;
+	font-size: 90%;
+	margin: 0;
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 10px 0;
+}
+#wpmanual div.pagination .pag-count {
+	float: left;
+	margin-left: 10px;
+}
+#wpmanual div.pagination .pagination-links {
+	float: right;
+	margin-right: 10px;
+}
+#wpmanual div.pagination .pagination-links span,
+#wpmanual div.pagination .pagination-links a {
+	font-size: 110%;
+	padding: 0 5px;
+	text-decoration:none;
+}
+#wpmanual div.pagination .pagination-links a:hover {
+	font-weight: bold;
+}
+
+#wpmanual .info {
+	margin: 0 0 15px;
+}
+#wpmanual .info p {
+	font-size: 90%;
+	display: block;
+	padding: 10px 15px;
+}
+#wpmanual .info.success p {
+	background-color: #efc;
+	border: 1px solid #591;
+	color: #250;
+}
+#wpmanual .info.error p {
+	background-color: #fdc;
+	border: 1px solid #a00;
+	color: #800;
+}
+#wpmanual .info.alert p {
+	background-color: #ffd;
+	border: 1px solid #cb2;
+	color: #440;
+}
+
+#wpmanual .manual-meta {
+	text-align:right;
+	font-size:80%;
+}
+
+.wpmanual-widget ul.manual-list li {
+	font-size:80%;
+}
+
+.wpmanual-widget ul.manual-list li.current_manual_page {
+	border:dotted 1px #CCC;
+	background:#f1f1f1;
+	padding:0.2em;
+}
+
+#wpmanual a.wpmanual_to_top,
+#wpmanual a.wpmanual_to_top:hover {
+	font-size:90%;
+	text-decoration:none;
+	color:#CCC;
+	border-bottom:dotted 1px #555;
+}
+
+#wpmanual ul.manual-list, 
+.wpmanual-widget ul.manual-list{
+	list-style: none;
+}
+
+#wpmanual ul.manual-list li{
+	margin:0 0.5em 1em 0.5em;
+}
+
+#wpmanual ul.manual-list li h4 {
+	font-weight:bold;
+	line-height:1em;
+	margin:0.8em 0 0.2em 0;
+}
+
+#wpmanual ul.manual-list dl.wpmanual-page-toc,
+.wpmanual-widget ul.manual-list dl.wpmanual-page-toc {
+	margin:0 0 0 0.5em;
+}
+
+#wpmanual dl.wpmanual-page-toc dt,
+.wpmanual-widget dl.wpmanual-page-toc dt {
+	font-weight: normal;
+}
+
+#wpmanual dl.wpmanual-page-toc dt a,
+.wpmanual-widget dl.wpmanual-page-toc dt a{
+	text-decoration:none;
+	border-bottom:dotted 1px #555;
+}
+
+#wpmanual .dt-h2 {
+	margin-left:1em;
+}
+
+#wpmanual .dt-h3 {
+	margin-left:1.5em;
+}
+
+#wpmanual .dt-h4 {
+	margin-left:2em;
+}
+
+#wpmanual .dt-h5 {
+	margin-left:2.5em;
+}
+
+#wpmanual .dt-h6 {
+	margin-left:3em;
+}
+
+.wpmanual-widget .dt-h2 {
+	margin-left:0.5em;
+}
+
+.wpmanual-widget .dt-h3 {
+	margin-left:1em;
+}
+
+.wpmanual-widget .dt-h4 {
+	margin-left:1.5em;
+}
+
+.wpmanual-widget .dt-h5 {
+	margin-left:2em;
+}
+
+.wpmanual-widget .dt-h6 {
+	margin-left:2.5em;
+}

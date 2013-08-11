@@ -1,0 +1,270 @@
+# Copyright (C) 2013 WP Manual
+# This file is distributed under the same license as the WP Manual package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Manual\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-manual\n"
+"POT-Creation-Date: 2013-08-11 12:18:37+00:00\n"
+"PO-Revision-Date: 2013-08-11 14:24+0100\n"
+"Last-Translator: imath <mathchristo@yahoo.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: includes/admin/admin.php:140 includes/admin/admin.php:141
+#: includes/admin/settings.php:14
+msgid "Manual Options"
+msgstr "Réglages Manuel"
+
+#: includes/admin/admin.php:178
+msgid ""
+"<strong>WP Manual is almost ready</strong>. You need to <a href=\"%s"
+"\">update your permalink structure</a> to something other than the default "
+"for it to work."
+msgstr ""
+"<strong>WP Manual est presque prêt</strong>. Il vous reste à <a href=\"%s"
+"\">modifier la structure de vos permaliens</a> pour une valeur différente de "
+"celle par défaut afin de permettre le bon fonctionnement du plugin."
+
+#: includes/admin/admin.php:193
+msgid ""
+"<strong>Oh no ! WP Manual is broken</strong>. It requires a WordPress page "
+"to run, please go to <a href=\"%s\">plugin settings</a> to fix this."
+msgstr ""
+"<strong>Oh non ! WP Manual est cassé</strong>. Ce plugin a besoin d&#39;être "
+"associé à une page WordPress pour fonctionner, merci de vous rendre dans <a "
+"href=\"%s\">les réglages de l&#39;extenstion</a> pour résoudre le problème."
+
+#: includes/admin/chapters.php:180 includes/admin/chapters.php:214
+msgid "Back to top"
+msgstr "Haut de page"
+
+#: includes/admin/chapters.php:230
+msgid "Click to zoom"
+msgstr "Cliquez pour zoomer"
+
+#: includes/admin/settings.php:36
+msgid "Select the headings you wish to include in the table of content"
+msgstr ""
+"Choisissez les tags de titre que vous souhaitez inclure dans la table des "
+"matières"
+
+#: includes/admin/settings.php:44
+msgid "Activate the back to top links"
+msgstr "Activer les liens vers le haut de page"
+
+#: includes/admin/settings.php:51
+msgid "Activate Thickbox to zoom the images"
+msgstr "Activer Thickbox pour zoomer les images"
+
+#: includes/admin/settings.php:86
+msgid "A few options to set.."
+msgstr "Quelques options à régler.."
+
+#: includes/admin/settings.php:188
+msgid "Title of the root WordPress page"
+msgstr "Titre de la page WordPress pour le manuel"
+
+#: includes/admin/settings.php:189
+msgid ""
+"Important the plugin needs a WordPress page to run, make sure to fill the "
+"field above with the wanted title for this page."
+msgstr ""
+"Attention, l&#39;extension a besoin d&#39;une page WordPress pour "
+"fonctionner. Merci de veiller à remplir le champ du dessus avec le titre "
+"désiré pour cette page."
+
+#: includes/admin/settings.php:231
+msgid "WP Manual settings"
+msgstr "Réglages de WP Manual"
+
+#: includes/admin/settings.php:240
+msgid "Save settings"
+msgstr "Enregistrer les réglages"
+
+#: includes/caps.php:206
+msgid "manual-editor"
+msgstr "editeur-manuel"
+
+#: includes/caps.php:212
+msgid "manual-reader"
+msgstr "lecteur-manuel"
+
+#: includes/functions.php:94
+msgid "Manual"
+msgstr "Manuel"
+
+#: includes/functions.php:96
+msgid ""
+"WP Manual needs this page to run. This content will not be displayed. Please "
+"leave this page as is."
+msgstr ""
+"WP Manual a besoin de cett page pour fonctionner. Ce contenu ne sera pas "
+"affiché. Merci de ne pas supprimer cette page."
+
+#: includes/functions.php:97
+msgid ""
+"Instead of this content, the page will display the detailled table of "
+"content for your manual."
+msgstr ""
+"En lieu et place de ce contenu, la table des matières détaillée sera "
+"affichée."
+
+#: includes/functions.php:351
+msgid "Edit Manual Page"
+msgstr "Modifier la page du manuel"
+
+#: includes/functions.php:614
+msgid "Title of your Manual root page"
+msgstr "Titre de la page WordPress du manuel"
+
+#: includes/template-tags.php:145
+msgid "%s manual page"
+msgstr "%s page du manuel"
+
+#: includes/template-tags.php:174
+msgid "Previous"
+msgstr "Précédent"
+
+#: includes/template-tags.php:178
+msgid "Next"
+msgstr "Suivant"
+
+#: includes/template-tags.php:260
+msgid "Protected: %s"
+msgstr "Protégé: %s"
+
+#: includes/template-tags.php:263
+msgid "Private: %s"
+msgstr "Privé: %s"
+
+#: includes/template.php:261
+msgid "Search results for : %s"
+msgstr "Résultats de la recherche : %s"
+
+#: includes/widget.php:24
+msgid "Displays the table of content when on a manual page"
+msgstr "Affiche la table des matières lorsqu&#39;une page de manuel est active"
+
+#: includes/widget.php:25
+msgctxt "widget name"
+msgid "WP Manual TOC"
+msgstr "TDM WP Manual"
+
+#: includes/widget.php:65
+msgid "Table of Content"
+msgstr "Table des matières"
+
+#: includes/widget.php:126 includes/widget.php:232
+msgid "Title:"
+msgstr "Titre:"
+
+#: includes/widget.php:151
+msgid "Displays a form to search in the manual"
+msgstr "Affiche un formulaire de recherche pour le manuel"
+
+#: includes/widget.php:152
+msgctxt "widget name"
+msgid "WP Manual Search"
+msgstr "Recherche WP Manual"
+
+#: includes/widget.php:185
+msgid "Manual Search"
+msgstr "Recherche Manuel"
+
+#: includes/widget.php:193
+msgctxt "placeholder"
+msgid "Search Manual &hellip;"
+msgstr "Recherche Manuel &hellip;"
+
+#: includes/widget.php:193
+msgid "Search for:"
+msgstr "Rechercher:"
+
+#: includes/widget.php:194
+msgctxt "submit button"
+msgid "Search"
+msgstr "Rechercher"
+
+#: templates/manual-home.php:37 templates/manual-page.php:35
+#: templates/manual-search.php:50
+msgid "Sorry, no manual page matched the query."
+msgstr "Désolé, aucune page du manuel ne répond à la requête."
+
+#: templates/manual-page.php:25 templates/manual-search.php:29
+msgid "Last Update : %s"
+msgstr "Dernière mise à jour : %s"
+
+#: wp-manual.php:60 wp-manual.php:62
+msgid "Cheatin&#8217; huh?"
+msgstr "Alors on triche ?"
+
+#: wp-manual.php:216 wp-manual.php:217 wp-manual.php:254
+msgid "Manual Pages"
+msgstr "Pages de manuel"
+
+#: wp-manual.php:218
+msgid "Manual Page"
+msgstr "Page du manuel"
+
+#: wp-manual.php:219
+msgid "All Manual pages"
+msgstr "Toutes les pages du manuel"
+
+#: wp-manual.php:220 wp-manual.php:224
+msgid "New Manual page"
+msgstr "Nouvelle page de manuel"
+
+#: wp-manual.php:221
+msgid "Create New Manual page"
+msgstr "Créer un nouvelle page de manuel"
+
+#: wp-manual.php:222
+msgid "Edit"
+msgstr "Modifier"
+
+#: wp-manual.php:223
+msgid "Edit Manual page"
+msgstr "Modifier la page du manuel"
+
+#: wp-manual.php:225 wp-manual.php:226
+msgid "View Manual page"
+msgstr "Voir la page du manuel"
+
+#: wp-manual.php:227
+msgid "Search Manual pages"
+msgstr "Rechercher une page de manuel"
+
+#: wp-manual.php:228
+msgid "No pages found"
+msgstr "Pas de page trouvée"
+
+#: wp-manual.php:229
+msgid "No pages found in Trash"
+msgstr "Pas de page trouvée dans la poubelle"
+
+#: wp-manual.php:230
+msgid "Parent Manual Page:"
+msgstr "Page de manuel parente:"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Manual"
+msgstr "WP Manual"
+
+#. Plugin URI of the plugin/theme
+msgid "http://imathi.eu/tag/wp-manual"
+msgstr "http://imathi.eu/tag/wp-manual"
+
+#. Description of the plugin/theme
+msgid "Let's create a manual to help people use your app"
+msgstr "Créez un manuel pour aider à la prise en main de votre outil"
+
+#. Author of the plugin/theme
+msgid "imath"
+msgstr "imath"
+
+#. Author URI of the plugin/theme
+msgid "http://imathi.eu"
+msgstr "http://imathi.eu"
