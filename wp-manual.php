@@ -3,7 +3,7 @@
 Plugin Name: WP Manual
 Plugin URI: http://imathi.eu/tag/wp-manual
 Description: Let's create a manual to help people use your app
-Version: 1.0-beta1
+Version: 1.0-beta2
 Author: imath
 Author URI: http://imathi.eu
 License: GPLv2
@@ -57,9 +57,9 @@ class WP_Manual {
 	
 	private function __construct() { /* Do nothing here */ }
 	
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wp-manual' ), '1.0-beta1' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wp-manual' ), '1.0-beta2' ); }
 
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wp-manual' ), '1.0-beta1' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wp-manual' ), '1.0-beta2' ); }
 
 	public function __isset( $key ) { return isset( $this->data[$key] ); }
 
@@ -85,7 +85,7 @@ class WP_Manual {
 
 		/** Version ***********************************************************/
 
-		$this->version    = '1.0-beta1';
+		$this->version    = '1.0-beta2';
 
 		/** Paths *************************************************************/
 
@@ -178,7 +178,7 @@ class WP_Manual {
 	 * @since 1.0
 	 */
 	public function setup_current_user() {
-		$this->current_user = &wp_get_current_user();
+		$this->current_user = wp_get_current_user();
 	}
 
 	/**

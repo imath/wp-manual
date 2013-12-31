@@ -206,12 +206,12 @@ function wpmanual_load_template() {
 		return false;
 		
 	if( !empty( $wpmanual_root_page_id ) ) {
-		$wp_query->queried_object    = &get_post( $wpmanual_root_page_id );
+		$wp_query->queried_object    = @get_post( $wpmanual_root_page_id );
 		$wp_query->queried_object_id = $wpmanual_root_page_id;
 		$post                        = $wp_query->queried_object;
 	}
 	
-	$located_template = locate_template( 'page.php', false );
+	$located_template = locate_template( wp_manual_get_template_from_stack(), false );
 
 	status_header( 200 );
 	$wp_query->is_page = $wp_query->is_singular = true;
@@ -609,4 +609,54 @@ function _wpmanual_maybe_remove_redirect_canonical() {
 function _wpmanual_maybe_load_template() {
 	if ( wpmanual_is_manual() )
 		wpmanual_load_template();
+}
+
+
+/**
+ * Tries to load the best template file to rely on
+ *
+ * @since 1.0
+ *
+ * @uses get_stylesheet_directory() to get the child theme directory
+ * @uses get_template_directory() to get the parent theme directory
+ */
+function wp_manual_get_template_from_stack() {
+
+	$template_names = array( 
+		'wpmanual.php',
+		'page.php',
+		'single.php',
+		'index.php'
+	);
+
+	$template_locations = array(
+		get_stylesheet_directory(), 
+		get_template_directory()
+	);
+
+	$template = 'page.php';
+
+	// Try to find a template file
+	foreach ( (array) $template_names as $template_name ) {
+
+		// Continue if template is empty
+		if ( empty( $template_name ) )
+			continue;
+
+		// Loop through template stack
+		foreach ( (array) $template_locations as $template_location ) {
+
+			// Continue if $template_location is empty
+			if ( empty( $template_location ) )
+				continue;
+
+			// Check child theme first
+			if ( file_exists( trailingslashit( $template_location ) . $template_name ) ) {
+				$template = $template_name;
+				break 2;
+			}
+		}
+	}
+
+	return $template;
 }

@@ -108,7 +108,7 @@ class WP_Manual_Admin {
 	 * @uses wp_insert_post() to create a page
 	 * @uses update_option() to store some init settings
 	 */
-	public function new_install() {
+	public static function new_install() {
 		
 		$wpmanual_page_id = get_option( '_wpmanual_root_page_id', 0 );
 		

@@ -283,7 +283,7 @@ function wpmanual_get_user_blog_role( $user_id = 0 ) {
 
 		// If there's a role in the array, use the first one
 		if ( !empty( $roles ) ) {
-			$role = array_shift( array_values( $roles ) );
+			@$role = array_shift( array_values( $roles ) );
 		}
 	}
 

@@ -22,18 +22,6 @@ class WP_Manual_Build_Chapters {
 	public $backtotop_counter;
 
 	/**
-	 * Loads the constructor
-	 *
-	 * @since  1.0
-	 * 
-	 * @param  string $content the content to parse
-	 * @uses WP_Manual_Build_Chapters::__construct() to begin the process
-	 */
-	public function wp_manual_build_chapters( $content = '' ) {
-		$this->__construct( $content );
-	} 
-
-	/**
 	 * The Constructor
 	 *
 	 * @since 1.0

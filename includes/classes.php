@@ -19,19 +19,6 @@ class WP_Manual_Page {
 	public $extra_data;
 	public $query;
 
-
-	/**
-	 * Loads the constructor
-	 *
-	 * @since 1.0
-	 * 
-	 * @param  integer $id manual page id
-	 * @uses WP_Manual_Page::__construct()
-	 */
-	public function wp_manual_page( $id = false ) {
-		$this->__construct( $id, $name );
-	}
-
 	/**
 	 * The constructor
 	 *
