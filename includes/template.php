@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @global object $wp_rewrite
  * @param  array $args the arguments
  * @uses wp_parse_args() to merge custom with default args
- * @uses bp_core_referrer() to get the referer in case BuddyPress is activated
+ * @uses bp_get_referer_path() to get the referer in case BuddyPress is activated
  * @uses wp_get_referer() to get the referer
  * @uses home_url() to get the site url
  * @return array the url parsed
@@ -35,7 +35,7 @@ function wpmanual_catch_uri( $args = '' ) {
 	$pathinfo = str_replace( "%", "%25", $pathinfo_array[0] );
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX || strpos( $_SERVER['REQUEST_URI'], 'wp-load.php' ) ){
-		$req_uri = function_exists('bp_core_referrer') ? bp_core_referrer() : wp_get_referer() ;
+		$req_uri = function_exists('bp_get_referer_path') ? bp_get_referer_path() : wp_get_referer() ;
 			
 		$home_path_ajax = trailingslashit( home_url() );
 		$req_uri = str_replace( $home_path_ajax, '',$req_uri );
