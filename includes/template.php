@@ -18,25 +18,25 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function wpmanual_catch_uri( $args = '' ) {
 	global $wp_rewrite;
-	
+
 	$is_manual = $req_uri = false;
-	
+
 	$defaults = array( 'root_page' => wpmanual_get_root_slug() );
-					
+
 	$r = wp_parse_args( $args, $defaults );
 	extract( $r, EXTR_SKIP );
-	
+
 	if ( isset( $_SERVER['PATH_INFO'] ) )
 		$pathinfo = $_SERVER['PATH_INFO'];
 	else
 		$pathinfo = '';
-		
+
 	$pathinfo_array = explode( '?', $pathinfo );
 	$pathinfo = str_replace( "%", "%25", $pathinfo_array[0] );
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX || strpos( $_SERVER['REQUEST_URI'], 'wp-load.php' ) ){
 		$req_uri = function_exists('bp_get_referer_path') ? bp_get_referer_path() : wp_get_referer() ;
-			
+
 		$home_path_ajax = trailingslashit( home_url() );
 		$req_uri = str_replace( $home_path_ajax, '',$req_uri );
 	} else {
@@ -45,12 +45,12 @@ function wpmanual_catch_uri( $args = '' ) {
 		$req_uri = $req_uri_array[0];
 		$self = $_SERVER['PHP_SELF'];
 		$home_path = parse_url( home_url() );
-		
+
 		if ( isset( $home_path['path'] ) )
 			$home_path = $home_path['path'];
 		else
 			$home_path = '';
-			
+
 		$home_path = trim( $home_path, '/' );
 
 		// Trim path info from the end and the leading home path from the
@@ -89,16 +89,16 @@ function wpmanual_catch_uri( $args = '' ) {
 		'is_manual'      => false,
 		'manual_page'    => false
 	);
-	
+
 	if( $query_chunk[$uri_offset] == $root_page ) {
 		$uri_parse['is_manual'] = true;
 
-		if( count( $query_chunk ) > 1 ) 
+		if( count( $query_chunk ) > 1 )
 			$uri_parse['manual_page'] = $query_chunk[$uri_offset +1];
 	}
 
 	do_action( 'wpmanual_catch_uri' );
-	
+
 	return $uri_parse;
 }
 
@@ -106,7 +106,7 @@ function wpmanual_catch_uri( $args = '' ) {
  * Locates the right templates for a WP Manual page
  *
  * @since 1.0
- * 
+ *
  * @param  array  $template_names the templates
  * @param  boolean $load           should we load or simply return
  * @param  boolean $require_once   should we load more than once the template
@@ -148,7 +148,7 @@ function wpmanual_locate_template( $template_names, $load = false, $require_once
 	// Maybe load the template if one was located
 	if ( ( true == $load ) && !empty( $located ) )
 		load_template( $located, $require_once );
-		
+
 	return $located;
 }
 
@@ -156,7 +156,7 @@ function wpmanual_locate_template( $template_names, $load = false, $require_once
  * Gets the requested template and load it
  *
  * @since 1.0
- * 
+ *
  * @param  string $slug
  * @param  string $name
  * @uses wpmanual_locate_template() to locate/load the template
@@ -200,24 +200,24 @@ function wpmanual_get_template_part( $slug, $name = null ) {
  */
 function wpmanual_load_template() {
 	global $post, $wp_query;
-	
+
 	$wpmanual_root_page_id = intval( wpmanual_get_root_page_id() );
 
 	if( empty( $wpmanual_root_page_id ) )
 		return false;
-		
+
 	if( !empty( $wpmanual_root_page_id ) ) {
 		$wp_query->queried_object    = @get_post( $wpmanual_root_page_id );
 		$wp_query->queried_object_id = $wpmanual_root_page_id;
 		$post                        = $wp_query->queried_object;
 	}
-	
+
 	$located_template = locate_template( wp_manual_get_template_from_stack(), false );
 
 	status_header( 200 );
 	$wp_query->is_page = $wp_query->is_singular = true;
 	$wp_query->is_404  = false;
-	
+
 	$reset_post_args = array(
 		'ID'             => 0,
 		'post_title'     => $post->post_title,
@@ -229,7 +229,7 @@ function wpmanual_load_template() {
 		'is_archive'     => true,
 		'comment_status' => 'closed'
 	);
-	
+
 	if( $manual_page = wpmanual_get_manual_page_name() ) {
 
 		$manual_page_data = new WP_Manual_Page();
@@ -243,9 +243,11 @@ function wpmanual_load_template() {
 			if( !empty( $manual_page_data->query->post->post_password ) )
 				$reset_post_args['post_password'] = $manual_page_data->query->post->post_password;
 		}
-		
 
-		add_filter( 'wpmanual_template_part', create_function( '', 'return array("manual", "page");' ) );
+
+		add_filter( 'wpmanual_template_part', function( $context = array() ) {
+			return array( 'manual', 'page' );
+		} );
 
 	} elseif( $manual_page_id = wpmannual_is_page_preview() ) {
 
@@ -255,33 +257,38 @@ function wpmanual_load_template() {
 		$reset_post_args['post_title'] = $manual_preview_data->query->post->post_title;
 		$reset_post_args['post_type'] = 'manual_page_preview';
 
-		add_filter( 'wpmanual_template_part', create_function( '', 'return array("manual", "page");' ) );
+		add_filter( 'wpmanual_template_part', function( $context = array() ) {
+			return array( 'manual', 'page' );
+		} );
 
 	} elseif( wpmanual_is_search() ) {
 
 		$reset_post_args['post_title'] = sprintf( __( 'Search results for : %s', 'wp-manual' ), wpmanual_sanitize_search() );
 		$reset_post_args['post_type'] = 'manual_search';
 
-		add_filter( 'wpmanual_template_part', create_function( '', 'return array("manual", "search");' ) );
+		add_filter( 'wpmanual_template_part', function( $context = array() ) {
+			return array( 'manual', 'search' );
+		} );
 
 	} else {
 
-		add_filter( 'wpmanual_template_part', create_function( '', 'return array("manual", "home");' ) );
-		
+		add_filter( 'wpmanual_template_part',  function( $context = array() ) {
+			return array( 'manual', 'home' );
+		} );
 	}
-	
-	
+
+
 	wpmanual_reset_post( $reset_post_args );
-	
+
 	if ( wpmanual_is_manual() ) {
-		
+
 		wpmanual_remove_all_filters( 'the_content' );
 
 		// Add a filter on the_content late, which we will later remove
 		add_filter( 'the_content', 'wpmanual_replace_the_content' );
-		
+
 	}
-	
+
 	do_action( 'wpmanual_template_loaded' );
 
 	load_template( apply_filters( 'wpmanual_load_template', $located_template ) );
@@ -422,8 +429,8 @@ function wpmanual_replace_the_content( $content = '' ) {
 
 	// Define local variable(s)
 	$new_content = '';
-	
-	$template_part = apply_filters( 'wpmanual_template_part', array() ); 
+
+	$template_part = apply_filters( 'wpmanual_template_part', array() );
 
 	if( count( $template_part ) == 0 ) {
 		wpmanual_restore_all_filters( 'the_content' );
@@ -439,7 +446,7 @@ function wpmanual_replace_the_content( $content = '' ) {
 	ob_end_clean();
 
 	wp_reset_postdata();
-	
+
 	$content = apply_filters( 'wpmanual_replace_the_content', $new_content, $content );
 
 	// Return possibly hi-jacked content
@@ -450,7 +457,7 @@ function wpmanual_replace_the_content( $content = '' ) {
  * Removes temporarly filters and add it to wpmanual instance
  *
  * @since 1.0
- * 
+ *
  * @global object $wp_filter
  * @global array $merged_filters
  * @param string $tag
@@ -503,7 +510,7 @@ function wpmanual_remove_all_filters( $tag, $priority = false ) {
  * Restores filters from the wpmanual instance
  *
  * @since 1.0
- * 
+ *
  * @global object $wp_filter
  * @global array $merged_filters
  * @param string $tag
@@ -556,7 +563,7 @@ function wpmanual_restore_all_filters( $tag, $priority = false ) {
  * Forces the WP Manual pages to have no comments
  *
  * @since 1.0
- * 
+ *
  * @param  boolean  $open
  * @param  integer $post_id
  * @uses wpmanual_is_manual() to check we're on WP Manual area
@@ -606,7 +613,7 @@ function _wpmanual_maybe_load_template() {
  */
 function wp_manual_get_template_from_stack() {
 
-	$template_names = array( 
+	$template_names = array(
 		'wpmanual.php',
 		'page.php',
 		'single.php',
@@ -614,7 +621,7 @@ function wp_manual_get_template_from_stack() {
 	);
 
 	$template_locations = array(
-		get_stylesheet_directory(), 
+		get_stylesheet_directory(),
 		get_template_directory()
 	);
 
