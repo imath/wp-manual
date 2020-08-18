@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * List the manual post type capabilities
  *
  * @since 1.0
- * 
+ *
  * @return array the capabilities
  */
 function wpmanual_get_caps() {
@@ -39,7 +39,7 @@ function wpmanual_map_cap( $caps = array(), $cap = '', $user_id = 0, $args = arr
 	switch ( $cap ) {
 
 		case 'edit_manual' :
-			
+
 			$_post = get_post( $args[0] );
 			if ( !empty( $_post ) ) {
 
@@ -92,7 +92,7 @@ add_filter( 'wpmanual_map_meta_caps', 'wpmanual_map_cap', 10, 4 );
  * Adds the WP Manual roles to WordPress ones
  *
  * @since  1.0
- * 
+ *
  * @uses wpmanual_get_wp_roles() to get WordPress roles
  * @uses wpmanual_get_dynamic_roles() to get the WP Manual roles
  * @return object WP Roles
@@ -113,7 +113,7 @@ function wpmanual_add_manual_roles() {
  * The Manual Editor role
  *
  * @since 1.0
- * 
+ *
  * @return string
  */
 function wpmanual_get_primary_role() {
@@ -124,7 +124,7 @@ function wpmanual_get_primary_role() {
  * The Manual default role
  *
  * @since 1.0
- * 
+ *
  * @return string
  */
 function wpmanual_get_default_role() {
@@ -135,7 +135,7 @@ function wpmanual_get_default_role() {
  * List the caps for the WP Manual role requested
  *
  * @since 1.0
- * 
+ *
  * @param  string $role the role to get the needed cap
  * @return array the role capabilities
  */
@@ -190,7 +190,7 @@ function wpmanual_get_caps_for_role( $role = '' ) {
 
 /**
  * The Roles with caps to loop through
- * 
+ *
  * @since  1.0
  *
  * @uses wpmanual_get_primary_role() to get the full cap role
@@ -264,14 +264,14 @@ function wpmanual_get_wp_roles() {
  * Gets the current user role
  *
  * @since  1.0
- * 
+ *
  * @param  integer $user_id the logged in user id
  * @uses wpmanual_add_manual_roles() to add WP Manual roles
  * @uses get_userdata() to get user's data
  * @return array the role
  */
 function wpmanual_get_user_blog_role( $user_id = 0 ) {
-	
+
 	$wp_roles  = wpmanual_add_manual_roles();
 
 	$user      = get_userdata( $user_id );
@@ -282,8 +282,9 @@ function wpmanual_get_user_blog_role( $user_id = 0 ) {
 		$roles = array_intersect( array_values( $user->roles ), array_keys( $all_roles ) );
 
 		// If there's a role in the array, use the first one
-		if ( !empty( $roles ) ) {
-			@$role = array_shift( array_values( $roles ) );
+		if ( ! empty( $roles ) ) {
+			$roles = array_values( $roles );
+			$role  = reset( $roles );
 		}
 	}
 
@@ -294,7 +295,7 @@ function wpmanual_get_user_blog_role( $user_id = 0 ) {
  * Sets a WP Manual Role to the current user without adding it to db
  *
  * @since 1.0
- * 
+ *
  * @uses is_user_logged_in() to check we have someone to set a role to
  * @uses wpmanual_current_user_id() to get current user id
  * @uses wpmanual_get_user_blog_role() to get the user's blog role
@@ -341,10 +342,10 @@ function wpmanual_set_current_user_default_role() {
 }
 
 /**
- * Strips WP Manual roles to avoid being in the profile edit/ user add role select box 
+ * Strips WP Manual roles to avoid being in the profile edit/ user add role select box
  *
  * @since 1.0
- * 
+ *
  * @param  array  $all_roles
  * @uses wpmanual_get_dynamic_roles() to get the WP Manual roles
  * @return array the roles - WP Manual ones
